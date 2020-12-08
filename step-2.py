@@ -8,69 +8,99 @@ def matrix_3x3(arr):
               
 cube=[["R", "R", "W"], ["G", "C", "W"], ["G", "B", "B"]]
 matrix_3x3(cube)
+print()
+
 
 usrInput = input("CUBE => ")
+print()
+       
 command = list(usrInput)
 
-def U(cmd):
-       if cmd == '\'':
-              k=2
+for i in range(0, len(command), 2):
+       if len(command) == 1:
+              break
+       elif command[i+1] == '\'':
+              command[i+1] = '+'
        else:
-              k=1
+              command.insert(i+1, '-')
+if command[-1] == '\'':
+       command[-1] = '+'
+else:
+       command.append('-')
+       
+def U(k):
+
        for _ in range(k):
               tmp=cube[0][0]
               cube[0][0]=cube[0][1]
               cube[0][1]=cube[0][2]
               cube[0][2]=tmp
-              print(cube)
+              print("U")
+              matrix_3x3(cube)
+              print()
 
-def R(cmd):
-       if cmd == '\'':
-              k=2
-       else:
-              k=1
+def R(k):
+
        for _ in range(k):
               tmp=cube[0][2]
               cube[0][2]=cube[1][2]
               cube[1][2]=cube[2][2]
               cube[2][2]=tmp
-              print(cube)
+              print("R")
+              matrix_3x3(cube)
+              print()
 
-def L(cmd):
-       if cmd == '\'':
-              k=2
-       else:
-              k=1
+def L(k):
+
        for _ in range(k):
               tmp=cube[0][0]
               cube[0][0]=cube[2][0]
               cube[2][0]=cube[1][0]
               cube[1][0]=tmp
-              print(cube)
+              print("L")
+              matrix_3x3(cube)
+              print()
 
-def B(cmd):
-       if cmd == '\'':
-              k=2
-       else:
-              k=1
+def B(k):
+
        for _ in range(k):
               tmp=cube[2][0]
               cube[2][0]=cube[2][2]
               cube[2][2]=cube[2][1]
               cube[2][1]=tmp
-              print(cube)
-
-while command:
-       cmd = command.pop(0)
-       if cmd[0] == "U":
-              U(cmd[1])
-       elif cmd[0] == "R":
-              R(cmd[1])
-       elif cmd[0] == "L":
-              L(cmd[1])
-       elif cmd[0] == "B":
-              B(cmd[1])
-       elif cmd[0] == "Q":
-              print("Bye~")
+              print("B")
+              matrix_3x3(cube)
+              print()
+i=0
+while True:
+       cmd = command
+       if i > len(cmd)-2:
               break
        
+       if cmd[i] == "U":
+              if cmd[i+1] == '+':
+                     U(2)
+              else:
+                     U(1)
+       elif cmd[i] == "R":
+              if cmd[i+1] == '+':
+                     R(2)
+              else:
+                     R(1)
+       elif cmd[i] == "L":
+              if cmd[i+1] == '+':
+                     L(2)
+              else:
+                     L(1)
+       elif cmd[i] == "B":
+              if cmd[i+1] == '+':
+                     B(2)
+              else:
+                     B(1)
+       elif cmd[i] == "Q":
+              print("Bye~")
+              print()
+              break
+       i += 2
+
+os.system("pause")   
