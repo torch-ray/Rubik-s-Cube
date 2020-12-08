@@ -1,25 +1,26 @@
-def matrix_B(cube):
-    for i in range(3):
-        for _ in range(3):
-            cube[i].append("B")
+def matrix_6x3x3(cube):
 
-    for i in range(3):
-        print(' '*9, end='')
+    color_str="BWOGYR"
+    for i in range(6):
         for j in range(3):
-            print(cube[i][j], end=' ')
+            for _ in range(3):
+                cube[i][j].append(color_str[i])
+
+    for i in range(6):
         print()
-cube1 = [[] for _ in range(3)]
-matrix_B(cube1)
-
-def matrix_W(cube):
-    for i in range(3):
-        for _ in range(3):
-            cube[i].append("W")
-
-    for i in range(3):
         for j in range(3):
-            print(cube[i][j], end=' ')
-        print()
-cube2 = [[] for _ in range(3)]
-matrix_W(cube2)
-
+            if i==0 or i==5:
+                print(' '*15, end='')
+            elif i==2:
+                print(' '*10, end='')
+            elif i==3:
+                print(' '*21, end='')
+            elif i==4:
+                print(' '*32, end='')
+            for k in range(3):
+                print(cube[i][j][k], end=' ')
+            print()
+            
+    
+cube = [[[] for _ in range(3)]for _ in range(6)]
+matrix_6x3x3(cube)
