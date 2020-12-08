@@ -77,22 +77,22 @@ while True:
        if i > len(cmd)-2:
               break
        
-       if cmd[i] == "U":
+       if cmd[i] == "U" or "u":
               if cmd[i+1] == '+':
                      U(2)
               else:
                      U(1)
-       elif cmd[i] == "R":
+       elif cmd[i] == "R" or "r":
               if cmd[i+1] == '+':
                      R(2)
               else:
                      R(1)
-       elif cmd[i] == "L":
+       elif cmd[i] == "L" or "l":
               if cmd[i+1] == '+':
                      L(2)
               else:
                      L(1)
-       elif cmd[i] == "B":
+       elif cmd[i] == "B" or "b":
               if cmd[i+1] == '+':
                      B(2)
               else:
