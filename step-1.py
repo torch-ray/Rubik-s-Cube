@@ -1,6 +1,5 @@
-import os
-
-for _ in range(4):
+numInput = int(input("원하시는 프로그램 실행 횟수를 입력해주세요 : "))
+for _ in range(numInput):
     usrInput = input('단어, 정수, L 또는 R을 공백과 함께 입력하세요 : ').split()
 
     word = usrInput[0]
@@ -22,4 +21,3 @@ for _ in range(4):
             
     print(''.join(arr))
 
-os.system("pause")
