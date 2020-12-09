@@ -135,4 +135,49 @@ while 3:
             cube[4][0][0], cube[4][0][1], cube[4][0][2] = cube[3][0][0], cube[3][0][1], cube[3][0][2]
             cube[3][0][0], cube[3][0][1], cube[3][0][2] = cube[2][0][0], cube[2][0][1], cube[2][0][2]
             cube[2][0][0], cube[2][0][1], cube[2][0][2] = tmp
+
+    def L(k):
+        for _ in range(k):
+            clockWise(cube[1])
+            tmp = cube[0][0][0], cube[0][1][0], cube[0][2][0]
+            cube[0][0][0], cube[0][1][0], cube[0][2][0] = cube[4][2][2], cube[4][1][2], cube[4][0][2]
+            cube[4][2][2], cube[4][1][2], cube[4][0][2] = cube[5][2][0], cube[5][1][0], cube[5][0][0]
+            cube[5][2][0], cube[5][1][0], cube[5][0][0] = cube[2][2][0], cube[2][1][0], cube[2][0][0]
+            cube[2][0][0], cube[2][1][0], cube[2][2][0] = tmp
+
+    def F(k):
+        for _ in range(k):
+            clockWise(cube[2])
+            tmp = cube[0][2][0], cube[0][2][1], cube[0][2][2]
+            cube[0][2][0], cube[0][2][1], cube[0][2][2] = cube[1][2][2], cube[1][1][2], cube[1][0][2]
+            cube[1][2][2], cube[1][1][2], cube[1][0][2] = cube[5][0][2], cube[5][0][1], cube[5][0][0]
+            cube[5][0][2], cube[5][0][1], cube[5][0][0] = cube[3][0][0], cube[3][1][0], cube[3][2][0]
+            cube[3][0][0], cube[3][1][0], cube[3][2][0] = tmp
+
+    def R(k):
+        for _ in range(k):
+            clockWise(cube[3])
+            tmp = cube[0][0][2], cube[0][1][2], cube[0][2][2]
+            cube[0][0][2], cube[0][1][2], cube[0][2][2] = cube[2][0][2], cube[2][1][2], cube[2][2][2]
+            cube[2][0][2], cube[2][1][2], cube[2][2][2] = cube[5][0][2], cube[5][1][2], cube[5][2][2]
+            cube[5][0][2], cube[5][1][2], cube[5][2][2] = cube[4][2][0], cube[4][1][0], cube[4][0][0]
+            cube[4][2][0], cube[4][1][0], cube[4][0][0] = tmp
+
+    def B(k):
+        for _ in range(k):
+            clockWise(cube[4])
+            tmp = cube[0][0][0], cube[0][0][1], cube[0][0][2]
+            cube[0][0][0], cube[0][0][1], cube[0][0][2] = cube[3][0][2], cube[3][1][2], cube[3][2][2]
+            cube[3][0][2], cube[3][1][2], cube[3][2][2] = cube[5][2][2], cube[5][2][1], cube[5][2][0]
+            cube[5][2][2], cube[5][2][1], cube[5][2][0] = cube[1][2][0], cube[1][1][0], cube[1][0][0]
+            cube[1][2][0], cube[1][1][0], cube[1][0][0] = tmp
+
+    def D(k):
+        for _ in range(k):
+            clockWise(cube[5])
+            tmp = cube[1][2][0], cube[1][2][1], cube[1][2][2]
+            cube[1][2][0], cube[1][2][1], cube[1][2][2] = cube[4][1][0], cube[4][2][1], cube[4][2][2]
+            cube[4][1][0], cube[4][2][1], cube[4][2][2] = cube[3][2][0], cube[3][2][1], cube[3][2][2]
+            cube[3][2][0], cube[3][2][1], cube[3][2][2] = cube[2][2][0], cube[2][2][1], cube[2][2][2]
+            cube[2][2][0], cube[2][2][1], cube[2][2][2] = tmp
         
