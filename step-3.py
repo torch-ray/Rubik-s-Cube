@@ -51,3 +51,68 @@ def matrix_6x3x3(cube):
         
 cube = [[[] for _ in range(3)]for _ in range(6)]
 matrix_6x3x3(cube)
+
+def read_command(rcmd):
+    i=0
+    while True:
+        cmd = rcmd
+        if i > len(cmd)-2:
+            break
+
+        if cmd[i] == "F":
+            if cmd[i+1] == '+':
+                F(3)
+            else:
+                F(1)
+        elif cmd[i] == "R":
+            if cmd[i+1] == '+':
+                R(3)
+            else:
+                R(1)
+        elif cmd[i] == "U":
+            if cmd[i+1] == '+':
+                U(3)
+            else:
+                U(1)
+        elif cmd[i] == "B":
+            if cmd[i+1] == '+':
+                B(3)
+            else:
+                B(1)
+        elif cmd[i] == "L":
+            if cmd[i+1] == '+':
+                L(3)
+            else:
+                L(1)
+        elif cmd[i] == "D":
+            if cmd[i+1] == '+':
+                D(3)
+            else:
+                D(1)
+        elif cmd[i] == "Q":
+            Q(1)
+        i += 2
+
+while 3:
+    usrInput = input("CUBE=> ").upper()
+    command = list(usrInput)
+
+    def command_change(cmd):
+        for i in range(0, len(cmd), 2):
+            if len(cmd)==1:
+                break
+            elif cmd[i+1] == '\"':
+                cmd[i+1] = '+'
+            else:
+                cmd.insert(i+1, '-')
+
+        if cmd[-1] == '\"':
+            cmd[-1] = '+'
+        else:
+            cmd.append('-')
+        read_command(cmd)
+        
+    command_change(command)
+
+    
+        
