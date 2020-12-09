@@ -126,5 +126,13 @@ while 3:
         arr[1][2] = arr[2][1]
         arr[2][1] = arr[1][0]
         arr[1][0] = tmp
-        
+
+    def U(k):
+        for _ in range(k):
+            clockWise(cube[0])
+            tmp = cube[1][0][0], cube[1][0][1], cube[1][0][2]
+            cube[1][0][0], cube[1][0][1], cube[1][0][2] = cube[4][0][0], cube[4][0][1], cube[4][0][2]
+            cube[4][0][0], cube[4][0][1], cube[4][0][2] = cube[3][0][0], cube[3][0][1], cube[3][0][2]
+            cube[3][0][0], cube[3][0][1], cube[3][0][2] = cube[2][0][0], cube[2][0][1], cube[2][0][2]
+            cube[2][0][0], cube[2][0][1], cube[2][0][2] = tmp
         
