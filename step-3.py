@@ -5,7 +5,7 @@ def matrix_6x3x3(cube):
         for j in range(3):
             for _ in range(3):
                 cube[i][j].append(color_str[i])
-
+    
     for i in range(1):
         for j in range(3):
             print(' '*15, end='')
@@ -114,5 +114,17 @@ while 3:
         
     command_change(command)
 
-    
+    def clockWise(cube):
+        tmp = arr[0][0]
+        arr[0][0] = arr[0][2]
+        arr[0][2] = arr[2][2]
+        arr[2][2] = arr[2][0]
+        arr[2][0] = tmp
+
+        tmp = arr[0][1]
+        arr[0][1] = arr[1][2]
+        arr[1][2] = arr[2][1]
+        arr[2][1] = arr[1][0]
+        arr[1][0] = tmp
+        
         
