@@ -52,10 +52,110 @@ def matrix_6x3x3(cube):
 cube = [[[] for _ in range(3)]for _ in range(6)]
 matrix_6x3x3(cube)
 
-def read_command(rcmd):
+
+
+while True:
+    x=False
+    def clockWise(arr):
+        tmp = arr[0][0]
+        arr[0][0] = arr[0][2]
+        arr[0][2] = arr[2][2]
+        arr[2][2] = arr[2][0]
+        arr[2][0] = tmp
+
+        tmp = arr[0][1]
+        arr[0][1] = arr[1][2]
+        arr[1][2] = arr[2][1]
+        arr[2][1] = arr[1][0]
+        arr[1][0] = tmp
+
+    def U(k):
+        for _ in range(k):
+            clockWise(cube[0])
+            tmp = cube[1][0][0], cube[1][0][1], cube[1][0][2]
+            cube[1][0][0], cube[1][0][1], cube[1][0][2] = cube[2][0][0], cube[2][0][1], cube[2][0][2]
+            cube[2][0][0], cube[2][0][1], cube[2][0][2] = cube[3][0][0], cube[3][0][1], cube[3][0][2]
+            cube[3][0][0], cube[3][0][1], cube[3][0][2] = cube[4][0][0], cube[4][0][1], cube[4][0][2]
+            cube[4][0][0], cube[4][0][1], cube[4][0][2] = tmp
+            print("U")
+            matrix_6x3x3(cube)
+            
+
+    def L(k):
+        for _ in range(k):
+            clockWise(cube[1])
+            tmp = cube[0][0][0], cube[0][1][0], cube[0][2][0]
+            cube[0][0][0], cube[0][1][0], cube[0][2][0] = cube[4][2][2], cube[4][1][2], cube[4][0][2]
+            cube[4][2][2], cube[4][1][2], cube[4][0][2] = cube[5][2][0], cube[5][1][0], cube[5][0][0]
+            cube[5][2][0], cube[5][1][0], cube[5][0][0] = cube[2][2][0], cube[2][1][0], cube[2][0][0]
+            cube[2][0][0], cube[2][1][0], cube[2][2][0] = tmp
+            print("L")
+            matrix_6x3x3(cube)
+
+    def F(k):
+        for _ in range(k):
+            clockWise(cube[2])
+            tmp = cube[0][2][0], cube[0][2][1], cube[0][2][2]
+            cube[0][2][0], cube[0][2][1], cube[0][2][2] = cube[1][2][2], cube[1][1][2], cube[1][0][2]
+            cube[1][2][2], cube[1][1][2], cube[1][0][2] = cube[5][0][2], cube[5][0][1], cube[5][0][0]
+            cube[5][0][2], cube[5][0][1], cube[5][0][0] = cube[3][0][0], cube[3][1][0], cube[3][2][0]
+            cube[3][0][0], cube[3][1][0], cube[3][2][0] = tmp
+            print("F")
+            matrix_6x3x3(cube)
+
+    def R(k):
+        for _ in range(k):
+            clockWise(cube[3])
+            tmp = cube[0][0][2], cube[0][1][2], cube[0][2][2]
+            cube[0][0][2], cube[0][1][2], cube[0][2][2] = cube[2][0][2], cube[2][1][2], cube[2][2][2]
+            cube[2][0][2], cube[2][1][2], cube[2][2][2] = cube[5][0][2], cube[5][1][2], cube[5][2][2]
+            cube[5][0][2], cube[5][1][2], cube[5][2][2] = cube[4][2][0], cube[4][1][0], cube[4][0][0]
+            cube[4][2][0], cube[4][1][0], cube[4][0][0] = tmp
+            print("R")
+            matrix_6x3x3(cube)
+
+    def B(k):
+        for _ in range(k):
+            clockWise(cube[4])
+            tmp = cube[0][0][0], cube[0][0][1], cube[0][0][2]
+            cube[0][0][0], cube[0][0][1], cube[0][0][2] = cube[3][0][2], cube[3][1][2], cube[3][2][2]
+            cube[3][0][2], cube[3][1][2], cube[3][2][2] = cube[5][2][2], cube[5][2][1], cube[5][2][0]
+            cube[5][2][2], cube[5][2][1], cube[5][2][0] = cube[1][2][0], cube[1][1][0], cube[1][0][0]
+            cube[1][2][0], cube[1][1][0], cube[1][0][0] = tmp
+            print("B")
+            matrix_6x3x3(cube)
+
+    def D(k):
+        for _ in range(k):
+            clockWise(cube[5])
+            tmp = cube[1][2][0], cube[1][2][1], cube[1][2][2]
+            cube[1][2][0], cube[1][2][1], cube[1][2][2] = cube[4][1][0], cube[4][2][1], cube[4][2][2]
+            cube[4][1][0], cube[4][2][1], cube[4][2][2] = cube[3][2][0], cube[3][2][1], cube[3][2][2]
+            cube[3][2][0], cube[3][2][1], cube[3][2][2] = cube[2][2][0], cube[2][2][1], cube[2][2][2]
+            cube[2][2][0], cube[2][2][1], cube[2][2][2] = tmp
+            print("D")
+            matrix_6x3x3(cube)
+            
+    usrInput = input("CUBE=> ").upper()
+    command = list(usrInput)
+    
+    for i in range(0, len(command), 2):
+            if len(command)==1:
+                break
+            elif command[i+1] == '\"':
+                command[i+1] = '+'
+            else:
+                command.insert(i+1, '-')
+
+    if command[-1] == '\"':
+        command[-1] = '+'
+    else:
+        command.append('-')
+            
+
     i=0
     while True:
-        cmd = rcmd
+        cmd = command
         if i > len(cmd)-2:
             break
 
@@ -90,94 +190,11 @@ def read_command(rcmd):
             else:
                 D(1)
         elif cmd[i] == "Q":
-            Q(1)
+            print("이용해주셔서 감사합니다. 뚜뚜뚜.")
+            x=True
+            break
         i += 2
-
-while 3:
-    usrInput = input("CUBE=> ").upper()
-    command = list(usrInput)
-
-    def command_change(cmd):
-        for i in range(0, len(cmd), 2):
-            if len(cmd)==1:
-                break
-            elif cmd[i+1] == '\"':
-                cmd[i+1] = '+'
-            else:
-                cmd.insert(i+1, '-')
-
-        if cmd[-1] == '\"':
-            cmd[-1] = '+'
-        else:
-            cmd.append('-')
-        read_command(cmd)
-        
-    command_change(command)
-
-    def clockWise(cube):
-        tmp = arr[0][0]
-        arr[0][0] = arr[0][2]
-        arr[0][2] = arr[2][2]
-        arr[2][2] = arr[2][0]
-        arr[2][0] = tmp
-
-        tmp = arr[0][1]
-        arr[0][1] = arr[1][2]
-        arr[1][2] = arr[2][1]
-        arr[2][1] = arr[1][0]
-        arr[1][0] = tmp
-
-    def U(k):
-        for _ in range(k):
-            clockWise(cube[0])
-            tmp = cube[1][0][0], cube[1][0][1], cube[1][0][2]
-            cube[1][0][0], cube[1][0][1], cube[1][0][2] = cube[4][0][0], cube[4][0][1], cube[4][0][2]
-            cube[4][0][0], cube[4][0][1], cube[4][0][2] = cube[3][0][0], cube[3][0][1], cube[3][0][2]
-            cube[3][0][0], cube[3][0][1], cube[3][0][2] = cube[2][0][0], cube[2][0][1], cube[2][0][2]
-            cube[2][0][0], cube[2][0][1], cube[2][0][2] = tmp
-
-    def L(k):
-        for _ in range(k):
-            clockWise(cube[1])
-            tmp = cube[0][0][0], cube[0][1][0], cube[0][2][0]
-            cube[0][0][0], cube[0][1][0], cube[0][2][0] = cube[4][2][2], cube[4][1][2], cube[4][0][2]
-            cube[4][2][2], cube[4][1][2], cube[4][0][2] = cube[5][2][0], cube[5][1][0], cube[5][0][0]
-            cube[5][2][0], cube[5][1][0], cube[5][0][0] = cube[2][2][0], cube[2][1][0], cube[2][0][0]
-            cube[2][0][0], cube[2][1][0], cube[2][2][0] = tmp
-
-    def F(k):
-        for _ in range(k):
-            clockWise(cube[2])
-            tmp = cube[0][2][0], cube[0][2][1], cube[0][2][2]
-            cube[0][2][0], cube[0][2][1], cube[0][2][2] = cube[1][2][2], cube[1][1][2], cube[1][0][2]
-            cube[1][2][2], cube[1][1][2], cube[1][0][2] = cube[5][0][2], cube[5][0][1], cube[5][0][0]
-            cube[5][0][2], cube[5][0][1], cube[5][0][0] = cube[3][0][0], cube[3][1][0], cube[3][2][0]
-            cube[3][0][0], cube[3][1][0], cube[3][2][0] = tmp
-
-    def R(k):
-        for _ in range(k):
-            clockWise(cube[3])
-            tmp = cube[0][0][2], cube[0][1][2], cube[0][2][2]
-            cube[0][0][2], cube[0][1][2], cube[0][2][2] = cube[2][0][2], cube[2][1][2], cube[2][2][2]
-            cube[2][0][2], cube[2][1][2], cube[2][2][2] = cube[5][0][2], cube[5][1][2], cube[5][2][2]
-            cube[5][0][2], cube[5][1][2], cube[5][2][2] = cube[4][2][0], cube[4][1][0], cube[4][0][0]
-            cube[4][2][0], cube[4][1][0], cube[4][0][0] = tmp
-
-    def B(k):
-        for _ in range(k):
-            clockWise(cube[4])
-            tmp = cube[0][0][0], cube[0][0][1], cube[0][0][2]
-            cube[0][0][0], cube[0][0][1], cube[0][0][2] = cube[3][0][2], cube[3][1][2], cube[3][2][2]
-            cube[3][0][2], cube[3][1][2], cube[3][2][2] = cube[5][2][2], cube[5][2][1], cube[5][2][0]
-            cube[5][2][2], cube[5][2][1], cube[5][2][0] = cube[1][2][0], cube[1][1][0], cube[1][0][0]
-            cube[1][2][0], cube[1][1][0], cube[1][0][0] = tmp
-
-    def D(k):
-        for _ in range(k):
-            clockWise(cube[5])
-            tmp = cube[1][2][0], cube[1][2][1], cube[1][2][2]
-            cube[1][2][0], cube[1][2][1], cube[1][2][2] = cube[4][1][0], cube[4][2][1], cube[4][2][2]
-            cube[4][1][0], cube[4][2][1], cube[4][2][2] = cube[3][2][0], cube[3][2][1], cube[3][2][2]
-            cube[3][2][0], cube[3][2][1], cube[3][2][2] = cube[2][2][0], cube[2][2][1], cube[2][2][2]
-            cube[2][2][0], cube[2][2][1], cube[2][2][2] = tmp
-        
+    
+    if x == True:
+        break
+    
