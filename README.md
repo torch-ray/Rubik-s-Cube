@@ -20,4 +20,8 @@
 5. UserInput값을 받기 위한 While-loop 및 해당 값을 읽기 위한 함수 제작 **[Commit No.5]**        
 - Step-2에서 사용했던 UserInput값을 받기 위한 코드를 While-loop 안으로 이동 => Q값을 받을 때까지 반복하기 위함  
 - 해당 While-loop는 현재 3(임시적으로), 이후 True로 수정하여 Q함수가 실행되면 프로그램 종료되도록 설계예정  
-- UserInput값을 받아서 각 함수로 전달하는 read_command 함수도 제작 => 마찬가지로 Step-2 코드 그대로 활용  
+- UserInput값을 받아서 각 함수로 전달하는 read_command 함수도 제작 => 마찬가지로 Step-2 코드 그대로 활용    
+6. Command에 따라 움직일 각 면에 대한 공통 Clockwise function 구축 **[Commit No.6]**  
+- Step-2에서 사용했던 코드를 재구현하기 전에, 공통적으로 사용할 시계방향 회전 함수 구축  
+- 각 색깔별 함수가 돌아갈때마다 clockwise 함수를 먼저 해당 면에 대해 돌리면 매번 코드짤 필요가 없음  
+- 필요할 때 마다 각 면(해당 면에 대한 Cube의 인덱스)을 제공받을 예정이기 때문에 [0][0][0]이 아니라, [0][0]형태로 구축  
