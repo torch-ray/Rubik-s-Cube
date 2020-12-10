@@ -1,3 +1,9 @@
+import time
+from datetime import timedelta
+
+start = time.time()
+cnt=0
+
 def cube_plane(cube):
     for i in range(6):
         print()
@@ -45,7 +51,6 @@ while True:
             cube[4][0][0], cube[4][0][1], cube[4][0][2] = tmp
             print("U")
             matrix_6x3x3(cube)
-            
 
     def L(k):
         for _ in range(k):
@@ -120,7 +125,7 @@ while True:
             cmd1.pop()
             cmd1.append('+')
             command.pop(0)
-    print(cmd1)
+    
     i=0
     while True:
         cmd = cmd1
@@ -130,34 +135,49 @@ while True:
         if cmd[i] == "F" or cmd[i] == "f":
             if cmd[i+1] == '+':
                 F(3)
+                cnt+=1
             else:
                 F(1)
+                cnt+=1
         elif cmd[i] == "R" or cmd[i] == "r":
             if cmd[i+1] == '+':
                 R(3)
+                cnt+=1
             else:
                 R(1)
+                cnt+=1
         elif cmd[i] == "U" or cmd[i] == "u":
             if cmd[i+1] == '+':
                 U(3)
+                cnt+=1
             else:
                 U(1)
+                cnt+=1
         elif cmd[i] == "B" or cmd[i] == "b":
             if cmd[i+1] == '+':
                 B(3)
+                cnt+=1
             else:
                 B(1)
+                cnt+=1
         elif cmd[i] == "L" or cmd[i] == "l":
             if cmd[i+1] == '+':
                 L(3)
+                cnt+=1
             else:
                 L(1)
+                cnt+=1
         elif cmd[i] == "D" or cmd[i] == "d":
             if cmd[i+1] == '+':
                 D(3)
+                cnt+=1
             else:
                 D(1)
+                cnt+=1
         elif cmd[i] == "Q" or cmd[i] == "q":
+            end = time.time() - start
+            print("경과시간: ", timedelta(seconds=end))
+            print(f"조작갯수: {cnt}")
             print("이용해주셔서 감사합니다. 뚜뚜뚜.")
             exitLoop=True
             break
