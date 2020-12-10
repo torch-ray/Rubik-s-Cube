@@ -4,14 +4,42 @@ start = time.time()
 cnt=0
 
 def cube_plane(cube):
-    for i in range(6):
-        print()
+    for i in range(1):
         for j in range(3):
+            print(' '*15, end='')
             for k in range(3):
                 print(cube[i][j][k], end=' ')
             print()
+    print()    
+    for i in range(1, 5):
+        for j in range(1):
+            for k in range(3):
+                print(cube[i][j][k], end=' ')
+            print(' '*4, end='')
+    print()
+    
+    for i in range(1, 5):
+        for j in range(1, 2):
+            for k in range(3):
+                print(cube[i][j][k], end=' ')
+            print(' '*4, end='')
+    print()
+    
+    for i in range(1, 5):
+        for j in range(2, 3):
+            for k in range(3):
+                print(cube[i][j][k], end=' ')
+            print(' '*4, end='')
     print()
 
+    for i in range(5,6):
+        print()
+        for j in range(3):
+            print(' '*15, end='')
+            for k in range(3):
+                print(cube[i][j][k], end=' ')
+            print()
+    
 def matrix_6x3x3(cube):
 
     color_str="BWOGYR"
@@ -186,4 +214,3 @@ while True:
     
     if exitLoop == True:
         break
-
