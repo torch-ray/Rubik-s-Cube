@@ -1,5 +1,4 @@
 import time
-from datetime import timedelta
 
 start = time.time()
 cnt=0
@@ -176,7 +175,9 @@ while True:
                 cnt+=1
         elif cmd[i] == "Q" or cmd[i] == "q":
             end = time.time() - start
-            print("경과시간: ", timedelta(seconds=end))
+            min = int(end//60)
+            sec = int(end % 60)
+            print("경과시간:","%02d:%02d" %(min, sec))
             print(f"조작갯수: {cnt}")
             print("이용해주셔서 감사합니다. 뚜뚜뚜.")
             exitLoop=True
