@@ -106,22 +106,23 @@ while True:
     print()
     command = list(usrInput)
     
-    for i in range(0, len(command), 2):
-            if len(command)==1:
-                break
-            elif command[i+1] == '\'':
-                command[i+1] = '+'
-            else:
-                command.insert(i+1, '-')
-
-    if command[-1] == '\'':
-        command[-1] = '+'
-    else:
-        command.append('-')
-        
+    cmd1=[]
+    while command:
+        if command[0].isalpha() == True:
+            cmd1.append(command.pop(0))
+            cmd1.append('-')
+        elif command[0].isdigit() == True:
+            cmd1.append(cmd1[-2])
+            cmd1.append('-')
+            command.pop(0)
+        else:
+            cmd1.pop()
+            cmd1.append('+')
+            command.pop(0)
+    
     i=0
     while True:
-        cmd = command
+        cmd = cmd1
         if i > len(cmd)-2:
             break
 
