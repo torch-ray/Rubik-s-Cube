@@ -1,7 +1,8 @@
 import time
+import random
 
 start = time.time()
-cnt=0
+cnt=0 
 
 def cube_plane(cube):
     for i in range(1):
@@ -53,6 +54,10 @@ cube = [[[] for _ in range(3)]for _ in range(6)]
 matrix_6x3x3(cube)
 
 while True:
+    
+    ranStr= ["U", "L", "F", "R", "B", "D"]
+    ranNum = random.sample(range(0, 6), 1)
+    n=ranNum[0]
     exitLoop=False
 
     def clockWise(arr):
@@ -140,7 +145,11 @@ while True:
     
     cmd1=[]
     while command:
-        if command[0].isalpha() == True:
+        if command[0] == "x" or command[0] == "X":
+            cmd1.append(ranStr[n])
+            cmd1.append('-')
+            command.pop(0)
+        elif command[0].isalpha() == True:
             cmd1.append(command.pop(0))
             cmd1.append('-')
         elif command[0].isdigit() == True:
