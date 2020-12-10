@@ -112,14 +112,15 @@ while True:
             cmd1.append(command.pop(0))
             cmd1.append('-')
         elif command[0].isdigit() == True:
-            cmd1.append(cmd1[-2])
-            cmd1.append('-')
+            for i in range(int(command[0])-1):
+                cmd1.append(cmd1[-2])
+                cmd1.append('-')
             command.pop(0)
         else:
             cmd1.pop()
             cmd1.append('+')
             command.pop(0)
-    
+    print(cmd1)
     i=0
     while True:
         cmd = cmd1
